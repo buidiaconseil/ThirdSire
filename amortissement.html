@@ -125,7 +125,7 @@
                  var valueDero=0;
                  for(i=0; i<ann-1; i++){
                      if(valueDero<0){
-                        tauxdegressif=1/(ann-i);
+                        tauxdegressif=1/(ann-i-1);
                      }
                      
                      baseFiscal=baseFiscal-valueCompFiscal;
@@ -143,14 +143,14 @@
                      prevDate=new Date(endDate.getTime()+1000*60*60*24)
                  }
                  tauxdegressif=1.0;
-                 valueCompFiscal=(baseFiscal*((360-nbJourPrem)/360)*tauxdegressif);
+                 valueCompFiscal=0;
                  valueTotalFiscal+=valueCompFiscal;
                  valueComp=(baseAmort*((360-nbJourPrem)/360)/ann);
                  valueTotal+=valueComp;
                  var redate = new Date(mydate.getTime()-1000*60*60*24);
                  redate.setFullYear(parseInt(mydate.getFullYear()) + parseInt($('#annId').val()));
                  content += '<tr><td>' + prevDate.toLocaleDateString() + '</td><td>'+redate.toLocaleDateString()+'</td>';
-                 content += '<td>'+baseFiscal+'*('+(360-nbJourPrem)+'/360)*'+(100*tauxdegressif).toFixed(2)+'</td><td>'+valueCompFiscal.toFixed(2)+'</td><td>'+valueTotalFiscal.toFixed(2)+'</td>';
+                 content += '<td></td><td></td><td></td>';
                  content += '<td>'+baseAmort+'*('+(360-nbJourPrem)+'/360)/'+ann+'</td><td>'+valueComp.toFixed(2)+'</td><td>'+valueTotal.toFixed(2)+'</td><td>'+(valueCompFiscal-valueComp).toFixed(2)+'</td></tr>';
                  
                  content += "</tbody></table>"
