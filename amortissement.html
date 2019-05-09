@@ -38,6 +38,124 @@
             background-color: #4CAF50;
             color: white;
         }
+        input[type=text], select {
+  width: 100%;
+  padding: 6px 6px;
+  margin: 1px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 6px 6px;
+  margin: 1px 0;
+  border: none;
+  border-radius: 1px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 1px;
+  background-color: #f2f2f2;
+  padding: 1px;
+}
+.form-style-2{
+	max-width: 150px;
+	padding: 20px 12px 10px 20px;
+	font: 13px Arial, Helvetica, sans-serif;
+}
+.form-style-2-heading{
+	font-weight: bold;
+	font-style: italic;
+	border-bottom: 2px solid #ddd;
+	margin-bottom: 20px;
+	font-size: 15px;
+	padding-bottom: 3px;
+}
+.form-style-2 label{
+	display: block;
+	margin: 0px 0px 15px 0px;
+}
+.form-style-2 label > span{
+	width: 100px;
+	font-weight: bold;
+	float: left;
+	padding-top: 8px;
+	padding-right: 5px;
+}
+.form-style-2 span.required{
+	color:red;
+}
+.form-style-2 .tel-number-field{
+	width: 40px;
+	text-align: center;
+}
+.form-style-2 input.input-field, .form-style-2 .select-field{
+	width: 48%;	
+}
+.form-style-2 input.input-field, 
+.form-style-2 .tel-number-field, 
+.form-style-2 .textarea-field, 
+ .form-style-2 .select-field{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border: 1px solid #C2C2C2;
+	box-shadow: 1px 1px 4px #EBEBEB;
+	-moz-box-shadow: 1px 1px 4px #EBEBEB;
+	-webkit-box-shadow: 1px 1px 4px #EBEBEB;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	padding: 7px;
+	outline: none;
+}
+.form-style-2 .input-field:focus, 
+.form-style-2 .tel-number-field:focus, 
+.form-style-2 .textarea-field:focus,  
+.form-style-2 .select-field:focus{
+	border: 1px solid #0C0;
+}
+.form-style-2 .textarea-field{
+	height:100px;
+	width: 55%;
+}
+.form-style-2 input[type=submit],
+.form-style-2 input[type=button]{
+	border: none;
+	padding: 8px 15px 8px 15px;
+	background: #FF8500;
+	color: #fff;
+	box-shadow: 1px 1px 4px #DADADA;
+	-moz-box-shadow: 1px 1px 4px #DADADA;
+	-webkit-box-shadow: 1px 1px 4px #DADADA;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+.form-style-2 input[type=submit]:hover,
+.form-style-2 input[type=button]:hover{
+	background: #EA7B00;
+	color: #fff;
+}
+div.onright {
+  position: absolute;
+  right: 0;
+  
+} 
+.main { 
+    display: flex; 
+    justify-content: space-between;
+  }
     </style>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -53,9 +171,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TR8LNH9"
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<p>Demonstrate fadeIn() with different parameters.</p>
-<p>Date de début:
-    <input type="text" id="datepicker">
+<h1>Calculateur d'Amortissement Fiscal,Comptable et Dérogatoire</h1>
+<table>
+    <tr><td  valign=top>
+<div class="form-style-2">
+        <div class="form-style-2-heading"></div>
+        <form action="" method="post">
+
+<p><label>Date de début:</label>
+    <input type="text" id="datepicker" valeur="01/05/2019"/>
 </p>
 <script>
         function rescan() {
@@ -264,12 +388,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             $("#datepicker").datepicker({
                 dateFormat: "dd/mm/yy"
             });
+            $("#datepicker").val(new Date().toLocaleDateString()).trigger('change')
             $.datepicker.setDefaults($.datepicker.regional["fr"]);
             $("#datepicker").change(rescan);
             $("#annId").change(rescan);
             $("#amortir").change(rescan);
             $("#restant").change(rescan);
             $("#type").change(rescan);
+            rescan();
+
         });
     </script>
 <label>Nombre d'années</label>
@@ -283,16 +410,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             }));
         }
     </script>
-<p>Date de fin:
+<p><label></label>Date de fin:</label>
     <input type="text" id="datefinal" disabled>
 </p>
-<p>Valeur vénale à amortir
+<p><label></label>Valeur vénale à amortir</label>
     <input type="text" id="amortir" value="20000.0">
 </p>
-<p>Valeur résiduelle à l'issue du plan
+<p><label></label>Valeur résiduelle à l'issue du plan</label>
     <input type="text" id="restant" value="0">
 </p>
-<p>Base amortissable
+<p><label></label>Base amortissable</label>
     <input type="text" id="baseAmort" disabled>
 </p>
 <label>Type ammortissement</label>
@@ -301,11 +428,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <option value="D">Dégressif</option>
     <option value="L">Linéaire</option>
 </select>
-<p>Valeur résiduel:
+<p><label></label>Valeur résiduel:</label>
     <input type="text" id="residuel" disabled>
 </p>
-<p>Taux amortissement dégressif:
+<p><label></label>Taux amortissement dégressif:</label>
     <input type="text" id="tauxdegres" disabled>
 </p>
-<div id="draw"></div>
+
+</form></div>
+</div>
+</td><td valign=top>
+<div  id="draw"></div>
+</td></tr></table>
 </body>
