@@ -100,11 +100,11 @@ div {
 	text-align: center;
 }
 .form-style-2 input.input-field, .form-style-2 .select-field{
-	width: 48%;	
+	width: 48%;
 }
-.form-style-2 input.input-field, 
-.form-style-2 .tel-number-field, 
-.form-style-2 .textarea-field, 
+.form-style-2 input.input-field,
+.form-style-2 .tel-number-field,
+.form-style-2 .textarea-field,
  .form-style-2 .select-field{
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -119,9 +119,9 @@ div {
 	padding: 7px;
 	outline: none;
 }
-.form-style-2 .input-field:focus, 
-.form-style-2 .tel-number-field:focus, 
-.form-style-2 .textarea-field:focus,  
+.form-style-2 .input-field:focus,
+.form-style-2 .tel-number-field:focus,
+.form-style-2 .textarea-field:focus,
 .form-style-2 .select-field:focus{
 	border: 1px solid #0C0;
 }
@@ -150,10 +150,10 @@ div {
 div.onright {
   position: absolute;
   right: 0;
-  
-} 
-.main { 
-    display: flex; 
+
+}
+.main {
+    display: flex;
     justify-content: space-between;
   }
     </style>
@@ -172,19 +172,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <h1>Calculateur d'Amortissement Fiscal,Comptable et Dérogatoire</h1>
-<p>L’amortissement est un terme comptable qui désigne la dépréciation dans le temps d’un bien appartenant à l’entreprise. 
+<p>L’amortissement est un terme comptable qui désigne la dépréciation dans le temps d’un bien appartenant à l’entreprise.
     La dotation aux amortissements représente la valeur de cette dépréciation au cours du temps, évaluée selon une méthode comptable et fiscal (Dégressif ou linéaire) légalement fixée.</p>
 <p>Chaque immobilisation nécessite le calcul de son amortissement annuel. Le tableau d'amortissements suivant montre le montant de l'amortissements pour l’année. Les éléménts de calcul sont paramétrables sur la gauche. </p>
-    <table>
+<table>
     <tr><td  valign=top>
-<div class="form-style-2">
-        <div class="form-style-2-heading"></div>
-        <form action="" method="post">
+        <div class="form-style-2">
+            <div class="form-style-2-heading"></div>
+            <form action="" method="post">
 
-<p><label>Date de début:</label>
-    <input type="text" id="datepicker" valeur="01/05/2019"/>
-</p>
-<script>
+                <p><label>Date de début:</label>
+                    <input type="text" id="datepicker" valeur="01/05/2019"/>
+                </p>
+                <script>
         function rescan() {
             var parts = $("#datepicker").val().split('/');
             var mydate = new Date(parts[2], parts[1] - 1, parts[0]);
@@ -333,7 +333,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             redate.setFullYear(parseInt(mydate.getFullYear()) + parseInt($('#annId').val()));
 
             var finPremiereAnnee = new Date(mydate.getFullYear(), 11, 31);
-            
+
             var nbJourPrem = 360-(30*(parseInt(parts[1]) - 1)+parseInt(parts[0]));
             if (nbJourPrem >= 360) {
                 nbJourPrem = 360;
@@ -402,10 +402,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         });
     </script>
-<label>Nombre d'années</label>
-<select id="annId" name="annee">
-</select>
-<script>
+                <label>Nombre d'années</label>
+                <select id="annId" name="annee">
+                </select>
+                <script>
         for (var i = 1; i < 30; i++) {
             $('#annId').append($('<option>', {
                 value: i + 1,
@@ -413,34 +413,39 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             }));
         }
     </script>
-<p><label>Date de fin:</label>
-    <input type="text" id="datefinal" disabled>
-</p>
-<p><label>Valeur vénale à amortir</label>
-    <input type="text" id="amortir" value="20000.0">
-</p>
-<p><label>Valeur résiduelle à l'issue du plan</label>
-    <input type="text" id="restant" value="0">
-</p>
-<p><label>Base amortissable</label>
-    <input type="text" id="baseAmort" disabled>
-</p>
-<label>Type ammortissement</label>
-<select id="type" name="type">
+                <p><label>Date de fin:</label>
+                    <input type="text" id="datefinal" disabled>
+                </p>
+                <p><label>Valeur vénale à amortir</label>
+                    <input type="text" id="amortir" value="20000.0">
+                </p>
+                <p><label>Valeur résiduelle à l'issue du plan</label>
+                    <input type="text" id="restant" value="0">
+                </p>
+                <p><label>Base amortissable</label>
+                    <input type="text" id="baseAmort" disabled>
+                </p>
+                <label>Type ammortissement</label>
+                <select id="type" name="type">
 
-    <option value="D">Dégressif</option>
-    <option value="L">Linéaire</option>
-</select>
-<p><label>Valeur résiduel:</label>
-    <input type="text" id="residuel" disabled>
-</p>
-<p><label>Taux amortissement dégressif:</label>
-    <input type="text" id="tauxdegres" disabled>
-</p>
+                    <option value="D">Dégressif</option>
+                    <option value="L">Linéaire</option>
+                </select>
+                <p><label>Valeur résiduel:</label>
+                    <input type="text" id="residuel" disabled>
+                </p>
+                <p><label>Taux amortissement dégressif:</label>
+                    <input type="text" id="tauxdegres" disabled>
+                </p>
 
-</form></div>
-</div>
-</td><td valign=top>
-<div  id="draw"></div>
-</td></tr></table>
+            </form></div>
+        </div>
+    </td><td valign=top>
+        <div  id="draw"></div>
+    </td></tr></table>
+
+<script src="https://sebadiaz.github.io/ricito/cookiechoices.js"></script><script>document.addEventListener('DOMContentLoaded', function(event){cookieChoices.showCookieConsentBar('Ce site utilise des cookies pour vous offrir le meilleur service. En poursuivant votre navigation, vous acceptez l’utilisation des cookies.', 'J’accepte', 'En savoir plus', 'https://www.buissondiaz.com/terms.html');});</script>
+<p>
+    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | by <a href="https://www.buissondiaz.com" target="_blank">Buisson Diaz Conseil</a>
+</p>
 </body>
