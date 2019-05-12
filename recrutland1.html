@@ -86,18 +86,24 @@
                             <li>
                                 <h1>Notre profonde expertise.</h1>
                                 <p>Nous sommes des experts des systèmes d'information, de la finance et de la data science. Nos connaissances nous permettent d'évaluer les meilleurs compétences pour vos besoins de nouveaux collaborateurs.</p>
-                                <p><a href="#features" class="arrow-btn">Find out why this freebie rocks! <i class="fa fa-long-arrow-right"></i></a></p>
+                                <p><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
+
+                                </p>
                             </li>
                             <li>
                                 <h1>Recherche Multi-Canal.</h1>
                                 <p>Nous avons une approche multi canal. Nous gérons la publication d'annonce sur les sites spécialisés. Nous utilisons les réseaux sociaux, pour communiquer. Nous faisons des approches directes de candidats. Nous utilisons
                                     des base de données de CV.</p>
-                                <p><a href="http://tympanus.net/codrops/?p=22554" class="arrow-btn">Find out why this freebie rocks! <i class="fa fa-long-arrow-right"></i></a></p>
+                                <p><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
+
+                                </p>
                             </li>
                             <li>
                                 <h1>Constamment présent.</h1>
                                 <p>Nous sommes présent dès l'étude de vos besoins jusqu'à la totale intégration de vos nouveaux collaborateurs.Nous recueillons les feedbacks de tous les participants à chaque moment du processus de recrutement.</p>
-                                <p><a href="http://tympanus.net/codrops/?p=22554" class="arrow-btn">Find out why this freebie rocks! <i class="fa fa-long-arrow-right"></i></a></p>
+                                <p><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
+
+                                </p>
                             </li>
                         </ul>
                     </div>
@@ -125,7 +131,7 @@
 
                                 </ul>
                             </p>
-                            <a href="http://tympanus.net/codrops/?p=22554" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
                         </div>
                     </div>
                     <div class="col-md-4 feature-2 wp2 delay-05s">
@@ -142,7 +148,7 @@
                                     <li>Jusqu'a 25% d'honoraires.</li>
 
                                 </ul>.</p>
-                            <a href="http://tympanus.net/codrops/?p=22554" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
                         </div>
                     </div>
                     <div class="col-md-4 feature-3 wp2 delay-1s">
@@ -159,7 +165,7 @@
                                     <li>Soft Skills.</li>
                                 </ul>
                             </p>
-                            <a href="http://tympanus.net/codrops/?p=22554" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
                         </div>
                     </div>
 
@@ -181,7 +187,9 @@
                             <p>"En trois mois, notre équipe a été montée sur des profiles ayants des connaissances poussées sur le Cloud et les Cluster. Merci pour leur réactivité." - Humberto P.</p>
 
                         </blockquote>
-                        <a href="http://tympanus.net/codrops/?p=22554" class="download-btn">Download! <i class="fa fa-download"></i></a>
+                        <p>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -201,6 +209,40 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body" style="text-align: center">
+                    <span class="close">&times;</span>
+
+                    <p>
+                        <h2>Fatigué de chercher le bon candidats?</h2>
+                        <p>Il est temps de faire appel à nous.</p>
+                    </p>
+                    <p>
+                        <form>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="innputEmail1" aria-describedby="emailHelp" placeholder="Laissez-nous votre adresse e-mail">
+                            </div>
+                            <button id="emailenvoi" type="submit" class="btn btn-primary">Contactez moi</button>
+                            <div class="form-group">
+
+                                <small><input type="checkbox" class="form-check-input" id="CGUCheck">
+									J'accepte les Conditions Générales d'Utilisation de Buisson Diaz Conseil et je reconnais avoir pris connaissance des termes de la Politique de confidentialité de Buisson Diaz Conseil pour le traitement de mes données personnelles.</small>
+                            </div>
+                        </form>
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
     <div class="col-md-5">
         <p><small> By <a href="http://tympanus.net/codrops/"><em>Codrops</em></a></small></p>
     </div>
@@ -215,6 +257,9 @@
     <script src="js/waypoints.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/min/scripts-min.js"></script>
+    <script>
+        setTimeout(() => $("#myModal").modal(), 10000);
+    </script>
 
 </body>
 
