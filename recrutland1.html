@@ -44,8 +44,40 @@
 </head>
 
 <body>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body" style="text-align: center">
+
+                    <p>
+                        <h2>Fatigué de chercher le bon candidat ?</h2>
+                        <p>Il est temps de faire appel à nous.</p>
+                    </p>
+                    <p>
+                        <form>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="innputEmail1" aria-describedby="emailHelp" placeholder="Laissez-nous votre adresse e-mail ">
+                            </div>
+                            <button id="emailenvoi" type="submit" class="btn btn-primary">Contactez moi</button>
+                            <div class="form-group">
+
+                                <small><input type="checkbox" class="form-check-input" id="CGUCheck"/>
+											J'accepte les Conditions Générales d'Utilisation de Buisson Diaz Conseil et je reconnais avoir pris connaissance des termes de la Politique de confidentialité de Buisson Diaz Conseil pour le traitement de mes données personnelles.
+										</small>
+                            </div>
+                        </form>
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
     <!--[if lt IE 7]>
-		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<p class="browsehappy ">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/ ">upgrade your browser</a> to improve your experience.</p>
 		<![endif]-->
     <!-- open/close -->
     <header>
@@ -59,9 +91,9 @@
                 </div>
                 <div class="row hero-content">
                     <div class="col-md-12">
-                        <h1 class="animated fadeInDown">Faite appel à un Expert pour Recruter dans les Nouvelles Technologies, la Data Science et la Finance.</h1>
+                        <h1 class="animated fadeInDown ">Faite appel à un Expert pour Recruter dans les Nouvelles Technologies, la Data Science et la Finance.</h1>
 
-                        <a href="#about" class="learn-btn animated fadeInUp">En apprendre plus sur notre offre. <i class="fa fa-arrow-down"></i></a>
+                        <a href="#about" class="learn-btn animated fadeInUp">En apprendre plus sur notre offre. <i class="fa fa-arrow-down "></i></a>
                     </div>
                 </div>
             </div>
@@ -76,6 +108,7 @@
             </div>
         </div>
     </section>
+
     <section class="features-intro">
         <div class="container-fluid">
             <div class="row">
@@ -84,9 +117,12 @@
                     <div class="features-slider">
                         <ul class="slides" id="featuresSlider">
                             <li>
-                                <h1>Notre profonde expertise.</h1>
-                                <p>Nous sommes des experts des systèmes d'information, de la finance et de la data science. Nos connaissances nous permettent d'évaluer les meilleurs compétences pour vos besoins de nouveaux collaborateurs.</p>
-                                <p><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
+                                <h1>Notre expertise.</h1>
+                                <p>Nous sommes des experts des systèmes d'information, de la finance et de la data science.
+
+                                </p>
+                                <p> Nos connaissances nous permettent d'évaluer les meilleurs compétences pour vos besoins de nouveaux collaborateurs.</p>
+                                <p><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal ">En savoir plus ...</button>
 
                                 </p>
                             </li>
@@ -184,7 +220,7 @@
                         <p>Ils nous font confiance et nous en sommes très fière.</p>
                         <blockquote class="team-quote">
                             <div class="avatar"><img src="img/avatar.png" alt="User Avatar"></div>
-                            <p>"En trois mois, notre équipe a été montée sur des profiles ayants des connaissances poussées sur le Cloud et les Cluster. Merci pour leur réactivité." - Humberto P.</p>
+                            <p>"En trois mois, notre équipe a été montée sur des profiles ayants des connaissances poussées sur le Cloud et les Cluster. Merci pour leur réactivité. " - Humberto P.</p>
 
                         </blockquote>
                         <p>
@@ -210,55 +246,24 @@
         </div>
     </footer>
 
-    <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-body" style="text-align: center">
-                    <span class="close">&times;</span>
 
-                    <p>
-                        <h2>Fatigué de chercher le bon candidats?</h2>
-                        <p>Il est temps de faire appel à nous.</p>
-                    </p>
-                    <p>
-                        <form>
-                            <div class="form-group">
-                                <input type="email" class="form-control" id="innputEmail1" aria-describedby="emailHelp" placeholder="Laissez-nous votre adresse e-mail">
-                            </div>
-                            <button id="emailenvoi" type="submit" class="btn btn-primary">Contactez moi</button>
-                            <div class="form-group">
-
-                                <small><input type="checkbox" class="form-check-input" id="CGUCheck">
-									J'accepte les Conditions Générales d'Utilisation de Buisson Diaz Conseil et je reconnais avoir pris connaissance des termes de la Politique de confidentialité de Buisson Diaz Conseil pour le traitement de mes données personnelles.</small>
-                            </div>
-                        </form>
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-
-    <div class="col-md-5">
-        <p><small> By <a href="http://tympanus.net/codrops/"><em>Codrops</em></a></small></p>
+    <div class="col-md-5 ">
+        <p><small> By <a href="http://tympanus.net/codrops/ "><em>Codrops</em></a></small></p>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/min/toucheffects-min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="js/flickity.pkgd.min.js"></script>
-    <script src="js/jquery.fancybox.pack.js"></script>
+    <script src="js/min/toucheffects-min.js "></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js "></script>
+    <script src="js/flickity.pkgd.min.js "></script>
+    <script src="js/jquery.fancybox.pack.js "></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/retina.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/min/scripts-min.js"></script>
+    <script src="js/retina.js "></script>
+    <script src="js/waypoints.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/min/scripts-min.js "></script>
     <script>
-        setTimeout(() => $("#myModal").modal(), 10000);
+        setTimeout(() => $("#myModal ").modal(), 10000);
     </script>
 
 </body>
