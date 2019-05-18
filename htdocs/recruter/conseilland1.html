@@ -1,20 +1,17 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js">
-<!--<![endif]-->
 <html lang="en" class="no-js">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Recruter avec Buisson Diaz Conseil</title>
-    <meta name="description" content="A free HTML5/CSS3 template made exclusively for Codrops" />
-    <meta name="keywords" content="html5 template, css3, one page, animations, agency, portfolio, web design" />
-    <meta name="author" content="" />
+    <title>Besoin de Conseils, Appeler Buisson Diaz Conseil</title>
+    <meta name="description" content="LA technologie est notre métier. Les plateforme Web , Backend, Java, React, Cloud, AWS ou Azure sont notre coeur de métier. Nous travaillons aussi dans la data science. Si vous chercher à créer le modèle de MAchine Learning qui rendra votre entreprise plus concurrentielle, nous somme les bons interlocuteurs."
+    />
+    <meta name="keywords" content="candidat, recrutement,java, développeur, informatique, data, science, finance, gestion , compta, machine, learning, machine learning, stream, spark, scala, python, scrum." />
+    <meta name="author" content="Sebastien DIAZ" />
+    <LINK REL="SHORTCUT ICON" HREF="https://sebadiaz.github.io/ricito/favicon.ico" />
+
     <!-- Bootstrap -->
     <script src="js/modernizr.custom.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -35,15 +32,42 @@
     <meta name="twitter:image" content="" />
     <meta name="twitter:url" content="" />
     <meta name="twitter:card" content="" />
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
+    <script>
+        dataLayer = [{
+            'pageCategory': 'signup-recruteur',
+            'visitorType': 'high-value'
+        }];
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TR8LNH9');
+    </script>
+    <!-- End Google Tag Manager -->
+
 </head>
 
 <body>
+
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TR8LNH9"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -53,20 +77,22 @@
                 <div class="modal-body" style="text-align: center">
 
                     <p>
-                        <h2>Fatigué de chercher le bon candidat ?</h2>
-                        <p>Il est temps de faire appel à nous.</p>
+                        <h2>Fatigué de chercher le bon prestataire ?</h2>
+                        <h3>Il est temps de faire appel à nous.</h3>
                     </p>
                     <p>
-                        <form>
+                        <form action="sendemail.php" method="post">
+                            <input type="hidden" name="type" value="recruteur" />
                             <div class="form-group">
-                                <input type="email" class="form-control" id="innputEmail1" aria-describedby="emailHelp" placeholder="Laissez-nous votre adresse e-mail ">
+                                <input name="email" type="email" class="form-control" id="innputEmail1" aria-describedby="emailHelp" placeholder="Laissez-nous votre adresse e-mail ">
+                                <small><input onclick='$("#emailenvoi").prop("disabled",false);' type="checkbox" class="form-check-input" id="CGUCheck"/>
+                                    J'accepte les Conditions Générales d'Utilisation de Buisson Diaz Conseil et je reconnais avoir pris connaissance des termes de la Politique de confidentialité de Buisson Diaz Conseil pour le traitement de mes données personnelles.
+                                </small>
                             </div>
-                            <button id="emailenvoi" type="submit" class="btn btn-primary">Contactez moi</button>
+                            <button id="emailenvoi" type="submit" class="btn btn-primary" disabled>Contactez moi</button>
                             <div class="form-group">
 
-                                <small><input type="checkbox" class="form-check-input" id="CGUCheck"/>
-											J'accepte les Conditions Générales d'Utilisation de Buisson Diaz Conseil et je reconnais avoir pris connaissance des termes de la Politique de confidentialité de Buisson Diaz Conseil pour le traitement de mes données personnelles.
-										</small>
+
                             </div>
                         </form>
                     </p>
@@ -76,24 +102,23 @@
 
         </div>
     </div>
-    <!--[if lt IE 7]>
-		<p class="browsehappy ">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/ ">upgrade your browser</a> to improve your experience.</p>
-		<![endif]-->
-    <!-- open/close -->
     <header>
         <section class="hero">
             <div class="texture-overlay"></div>
             <div class="container">
                 <div class="row nav-wrapper">
                     <div class="col-md-12 col-sm-12 col-xs-12 text-left">
-                        <h2>Buisson Diaz Conseil</h2>
+                        <h2><a id="gohome" href="/">Buisson Diaz Conseil</a></h2>
                     </div>
                 </div>
                 <div class="row hero-content">
                     <div class="col-md-12">
-                        <h1 class="animated fadeInDown ">Faite appel à un Expert pour Recruter dans les Nouvelles Technologies, la Data Science et la Finance.</h1>
+                        <h1 class="animated fadeInDown "><b>
+                        Faite appel à un Expert des Nouvelles Technologies, de la Finance, de la Data Science et des Jeux Vidéo.
+                    </b>
+                        </h1>
 
-                        <a href="#about" class="learn-btn animated fadeInUp">En apprendre plus sur notre offre. <i class="fa fa-arrow-down "></i></a>
+                        <a href="#about" id="goabout" class="learn-btn animated fadeInUp">En apprendre plus sur notre offre. <i class="fa fa-arrow-down "></i></a>
                     </div>
                 </div>
             </div>
@@ -118,29 +143,31 @@
                         <ul class="slides" id="featuresSlider">
                             <li>
                                 <h1>Notre expertise.</h1>
-                                <p>Nous sommes des experts des systèmes d'information, de la finance et de la data science.
-
-                                </p>
-                                <p> Nos connaissances nous permettent d'évaluer les meilleurs compétences pour vos besoins de nouveaux collaborateurs.</p>
-                                <p><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal ">En savoir plus ...</button>
+                                <p>Nous sommes des experts des systèmes d'information, de la finance, du jeux vidéo, du sport et de la data science. Nous connaissons profondémment les sujets sur lequels nous travaillons. Du Cloud au Options Asiatique, en
+                                    passant par des modèles à variables latentes, vous pouvez nous faire confiance pour évaluer vos besoins. Les jeux vidéo ou le Rugby sont aussi des sujets parfaitement maitrisés. Nos connaissances sont profondes et nous
+                                    permettent de livrer une solution complexe et entière.</p>
+                                <p><button id="expertisesignup" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal ">En savoir plus ...</button>
 
                                 </p>
                             </li>
                             <li>
-                                <h1>Recherche Multi-Canal.</h1>
-                                <p>Nous avons une approche multi canal. Nous gérons la publication d'annonce sur les sites spécialisés. Nous utilisons les réseaux sociaux, pour communiquer. Nous faisons des approches directes de candidats. Nous utilisons
-                                    des base de données de CV.</p>
-                                <p><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
+                                <h1>Recherche.</h1>
+                                <p>Notre approche nous permet de vous aider dans vos projet de recherchemulti canal. Nous gérons la publication d'annonce sur les sites spécialisés. Nous utilisons les réseaux sociaux, pour communiquer. Nous faisons des approches
+                                    directes de candidats. Nous utilisons des base de données de CV.</p>
+                                <p>Nous contactons aussi les écoles, les universités ou les centres de formation. </p>
+                                <p><button id="multicanalsignup" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
 
                                 </p>
                             </li>
+                            <!--
                             <li>
                                 <h1>Constamment présent.</h1>
                                 <p>Nous sommes présent dès l'étude de vos besoins jusqu'à la totale intégration de vos nouveaux collaborateurs.Nous recueillons les feedbacks de tous les participants à chaque moment du processus de recrutement.</p>
-                                <p><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
+                                <p><button id="presentsignup" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
 
                                 </p>
                             </li>
+                            -->
                         </ul>
                     </div>
                 </div>
@@ -167,7 +194,7 @@
 
                                 </ul>
                             </p>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
+                            <button id="garanatiessignup" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
                         </div>
                     </div>
                     <div class="col-md-4 feature-2 wp2 delay-05s">
@@ -181,10 +208,10 @@
                                     <li>Success Fee. Au Succès.</li>
                                     <li>Règlement des honoraires à la fin de la période d'essai.</li>
                                     <li>Reprise sans frais.</li>
-                                    <li>Jusqu'a 25% d'honoraires.</li>
+                                    <!-- <li>Jusqu'a 25% d'honoraires.</li> -->
 
                                 </ul>.</p>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
+                            <button id="tarificationsignup" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
                         </div>
                     </div>
                     <div class="col-md-4 feature-3 wp2 delay-1s">
@@ -201,7 +228,7 @@
                                     <li>Soft Skills.</li>
                                 </ul>
                             </p>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
+                            <button id="evaluationsignup" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
                         </div>
                     </div>
 
@@ -224,7 +251,7 @@
 
                         </blockquote>
                         <p>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
+                            <button id="clientsatisfaitsignup" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
                         </p>
                     </div>
                 </div>
@@ -236,10 +263,9 @@
             <div class="row">
                 <div class="col-md-7">
                     <ul class="footer-nav">
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#screenshots">Screenshots</a></li>
-                        <li><a href="#download">Download</a></li>
+                        <li><a id="goprivacy" href="/privacy.txt" target="_blank">Privacy</a></li>
+                        <li><a id="goterms" href="/terms.txt" target="_blank">Terms</a></li>
+                        <li><a id="golegal" href="/legal.txt" target="_blank">Legal Information</a></li>
                     </ul>
                 </div>
             </div>
@@ -248,9 +274,7 @@
 
 
 
-    <div class="col-md-5 ">
-        <p><small> By <a href="http://tympanus.net/codrops/ "><em>Codrops</em></a></small></p>
-    </div>
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/min/toucheffects-min.js "></script>
@@ -263,7 +287,7 @@
     <script src="js/bootstrap.min.js "></script>
     <script src="js/min/scripts-min.js "></script>
     <script>
-        setTimeout(() => $("#myModal ").modal(), 10000);
+        setTimeout(() => $("#myModal ").modal(), 15000);
     </script>
 
 </body>

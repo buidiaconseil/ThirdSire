@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Candidater avec Buisson Diaz Conseil</title>
+    <title>Faite vous Recruter avec Buisson Diaz Conseil</title>
     <meta name="description" content="Recruter est notre passion.  Nous recrutons des sujets à même d'offrir les meilleurs compétences pour nos clients." />
     <meta name="keywords" content="candidat, recrutement,java, développeur, informatique, data, science, finance, gestion , compta" />
     <meta name="author" content="Sebastien DIAZ" />
@@ -33,7 +33,7 @@
     <meta name="twitter:card" content="" />
     <script>
         dataLayer = [{
-            'pageCategory': 'signup-candidat',
+            'pageCategory': 'signup-candidats',
             'visitorType': 'high-value'
         }];
     </script>
@@ -76,13 +76,14 @@
                 <div class="modal-body" style="text-align: center">
 
                     <p>
-                        <h2>Fatigué de chercher la bonne entreprise ?</h2>
+                        <h2>Fatigué de chercher la bonne enteprise ?</h2>
                         <h3>Il est temps de faire appel à nous.</h3>
                     </p>
                     <p>
-                        <form>
+                        <form action="sendemail.php" method="post">
+                            <input type="hidden" name="type" value="candidat" />
                             <div class="form-group">
-                                <input type="email" class="form-control" id="innputEmail1" aria-describedby="emailHelp" placeholder="Laissez-nous votre adresse e-mail ">
+                                <input name="email" type="email" class="form-control" id="innputEmail1" aria-describedby="emailHelp" placeholder="Laissez-nous votre adresse e-mail ">
                                 <small><input onclick='$("#emailenvoi").prop("disabled",false);' type="checkbox" class="form-check-input" id="CGUCheck"/>
                                     J'accepte les Conditions Générales d'Utilisation de Buisson Diaz Conseil et je reconnais avoir pris connaissance des termes de la Politique de confidentialité de Buisson Diaz Conseil pour le traitement de mes données personnelles.
                                 </small>
@@ -111,7 +112,10 @@
                 </div>
                 <div class="row hero-content">
                     <div class="col-md-12">
-                        <h1 class="animated fadeInDown ">Faite appel à un Expert pour Entrer dans une compagnie à fort potentiel qui vous offrira un avenir extraordinaire.</h1>
+                        <h1 class="animated fadeInDown "><b>
+                        Faite appel à un Expert pour être Recruté dans les Nouvelles Technologies, la Finance, la Data Science et les Jeux Vidéo.
+                    </b>
+                        </h1>
 
                         <a href="#about" id="goabout" class="learn-btn animated fadeInUp">En apprendre plus sur notre offre. <i class="fa fa-arrow-down "></i></a>
                     </div>
@@ -138,18 +142,19 @@
                         <ul class="slides" id="featuresSlider">
                             <li>
                                 <h1>Notre expertise.</h1>
-                                <p>Nous sommes des experts des systèmes d'information, de la finance, du jeux vidéo, du sport et de la data science. Nous connaissons profondémment les sujets sur lequels nous travaillons. Du Cloud au Options Asiatique, en
-                                    passant par des modèles à variables latentes, vous pouvez nous faire confiance pour évaluer les candidats. Les jeux vidéo ou le Rugby sont aussi des sujets parfaitement maitrisés. Nos connaissances sont profondes et
-                                    nous permettent de faire une évaluation à 360 degrés des compétences pour vos besoins de nouveaux collaborateurs.</p>
+                                <p>Nous sommes des experts des systèmes d'information, de la finance, des jeux vidéo, du sport et de la data science. Nous connaissons profondément les sujets sur lesquels nous travaillons. Du Cloud au Options Asiatique, en
+                                    passant par des modèles à variables latentes, vous pouvez nous faire confiance pour vous aider à trouver la bonne entreprise correspondant à vos capacités. Les jeux vidéo ou le Rugby sont aussi des sujets parfaitement
+                                    maîtrisés. Nos connaissances sont profondes et nous permettent de faire une évaluation à 360 degrés des entreprises capable de vous embaucher.</p>
                                 <p><button id="expertisesignup" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal ">En savoir plus ...</button>
 
                                 </p>
                             </li>
                             <li>
-                                <h1>Recherche Multi-Canal.</h1>
-                                <p>Nous avons une approche multi canal. Nous gérons la publication d'annonce sur les sites spécialisés. Nous utilisons les réseaux sociaux, pour communiquer. Nous faisons des approches directes de candidats. Nous utilisons
-                                    des base de données de CV.</p>
-                                <p>Nous contactons aussi les écoles, les universités ou les centres de formation. </p>
+                                <h1>Recherche et Analyse du Marché.</h1>
+                                <p>
+                                    Nous avons une approche qui étudie la capacité des entreprises à embaucher et à offrir des carrières à même d'intéresser des candidats en recherche de postes à forte valeur ajoutée. Nous gérons les contacts avec les entreprises afin de leur fournir le
+                                    plus d'informations sur les candidats potentiellement intéressants. Nous contactons les entreprises par les réseaux sociaux et par des approches directes. Nous utilisons des bases de données d'entreprise.</p>
+
                                 <p><button id="multicanalsignup" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
 
                                 </p>
@@ -179,12 +184,12 @@
                             <i class="fa fa-desktop"></i>
                         </div>
                         <div class="feature-content">
-                            <h1>Les Garanties</h1>
+                            <h1>Le Suivi des Candidats</h1>
                             <p>
                                 <ul>
-                                    <li>Garantie de bonne fin.</li>
-                                    <li>Garantie de reprise en cas de rupture de contrats.</li>
-                                    <li>Non-sollicitation pendant une année.</li>
+                                    <li>Du début jusqu'à l'embauche du candidat.</li>
+                                    <li>Présentation du candidat.</li>
+                                    <li>Feedback des intervenants.</li>
                                     <li>Confidentialité.</li>
 
                                 </ul>
@@ -200,10 +205,10 @@
                             <h1>Une Tarification Avantageuse</h1>
                             <p>
                                 <ul>
-                                    <li>Success Fee. Au Succès.</li>
-                                    <li>Règlement des honoraires à la fin de la période d'essai.</li>
-                                    <li>Reprise sans frais.</li>
-                                    <li>Jusqu'a 25% d'honoraires.</li>
+                                    <li>Aucun Frais.</li>
+                                    <li>Règlement des honoraires par l'entreprise.</li>
+                                    <li>Transparent pour le candidat.</li>
+                                    <!-- <li>Jusqu'a 25% d'honoraires.</li> -->
 
                                 </ul>.</p>
                             <button id="tarificationsignup" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
@@ -214,13 +219,13 @@
                             <i class="fa fa-heart"></i>
                         </div>
                         <div class="feature-content">
-                            <h1>Evaluation des candidats</h1>
+                            <h1>Promotion de votre candidature.</h1>
                             <p>
                                 <ul>
-                                    <li>Tri de CV.</li>
-                                    <li>Entretiens.</li>
-                                    <li>Hard Skills.</li>
-                                    <li>Soft Skills.</li>
+                                    <li>Fabrication de Mini CV.</li>
+                                    <li>Conseils pour l'embauche.</li>
+                                    <li>Contacts réitérés de l'entreprise (Si nécessaire).</li>
+
                                 </ul>
                             </p>
                             <button id="evaluationsignup" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">En savoir plus ...</button>
@@ -242,7 +247,8 @@
                         <p>Ils nous font confiance et nous en sommes très fière.</p>
                         <blockquote class="team-quote">
                             <div class="avatar"><img src="img/avatar.png" alt="User Avatar"></div>
-                            <p>"En trois mois, notre équipe a été montée sur des profiles ayants des connaissances poussées sur le Cloud et les Cluster. Merci pour leur réactivité. " - Humberto P.</p>
+                            <p>"En un mois, j'ai reçu trois offres correspondants parfaitement à mes compétences. J'ai tout de suite opté pour celle qui avait un potentiel intéressant dans un secteur qui m'intéressait. Et j'ai été embauché. Merci pour leur
+                                efficacité. " - Ovidiu M.</p>
 
                         </blockquote>
                         <p>
