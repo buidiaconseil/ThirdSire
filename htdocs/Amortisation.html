@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<title>Amortisation Linéaire et Dégressif Comptable</title>
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script></script>
+    <style>
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td,
+        #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+        input[type=text], select {
+  width: 100%;
+  padding: 6px 6px;
+  margin: 1px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 6px 6px;
+  margin: 1px 0;
+  border: none;
+  border-radius: 1px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 1px;
+  background-color: #f2f2f2;
+  padding: 1px;
+}
+.form-style-2{
+	max-width: 150px;
+	padding: 20px 12px 10px 20px;
+	font: 13px Arial, Helvetica, sans-serif;
+}
+.form-style-2-heading{
+	font-weight: bold;
+	font-style: italic;
+	border-bottom: 2px solid #ddd;
+	margin-bottom: 20px;
+	font-size: 15px;
+	padding-bottom: 3px;
+}
+.form-style-2 label{
+	display: block;
+	margin: 0px 0px 15px 0px;
+}
+.form-style-2 label > span{
+	width: 100px;
+	font-weight: bold;
+	float: left;
+	padding-top: 8px;
+	padding-right: 5px;
+}
+.form-style-2 span.required{
+	color:red;
+}
+.form-style-2 .tel-number-field{
+	width: 40px;
+	text-align: center;
+}
+.form-style-2 input.input-field, .form-style-2 .select-field{
+	width: 48%;
+}
+.form-style-2 input.input-field,
+.form-style-2 .tel-number-field,
+.form-style-2 .textarea-field,
+ .form-style-2 .select-field{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border: 1px solid #C2C2C2;
+	box-shadow: 1px 1px 4px #EBEBEB;
+	-moz-box-shadow: 1px 1px 4px #EBEBEB;
+	-webkit-box-shadow: 1px 1px 4px #EBEBEB;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	padding: 7px;
+	outline: none;
+}
+.form-style-2 .input-field:focus,
+.form-style-2 .tel-number-field:focus,
+.form-style-2 .textarea-field:focus,
+.form-style-2 .select-field:focus{
+	border: 1px solid #0C0;
+}
+.form-style-2 .textarea-field{
+	height:100px;
+	width: 55%;
+}
+.form-style-2 input[type=submit],
+.form-style-2 input[type=button]{
+	border: none;
+	padding: 8px 15px 8px 15px;
+	background: #FF8500;
+	color: #fff;
+	box-shadow: 1px 1px 4px #DADADA;
+	-moz-box-shadow: 1px 1px 4px #DADADA;
+	-webkit-box-shadow: 1px 1px 4px #DADADA;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+.form-style-2 input[type=submit]:hover,
+.form-style-2 input[type=button]:hover{
+	background: #EA7B00;
+	color: #fff;
+}
+div.onright {
+  position: absolute;
+  right: 0;
+
+}
+.main {
+    display: flex;
+    justify-content: space-between;
+  }
+    </style>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TR8LNH9');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117582469-1"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-117582469-1');
+</script>
+    <!-- Anti-flicker snippet (recommended)  -->
+    <style>.async-hide { opacity: 0 !important} </style>
+    <script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+})(window,document.documentElement,'async-hide','dataLayer',4000,
+{'GTM-WVNGFPG':true});</script>
+
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TR8LNH9"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<h1>Calculateur d'Amortissement Fiscal,Comptable et Dérogatoire</h1>
+<p>L’amortissement est un terme comptable qui désigne la dépréciation dans le temps d’un bien appartenant à l’entreprise.
+    La dotation aux amortissements représente la valeur de cette dépréciation au cours du temps, évaluée selon une méthode comptable et fiscal (Dégressif ou linéaire) légalement fixée.</p>
+<p>Chaque immobilisation nécessite le calcul de son amortissement annuel. Le tableau d'amortissements suivant montre le montant de l'amortissements pour l’année. Les éléménts de calcul sont paramétrables sur la gauche. </p>
+<table>
+    <tr><td  valign=top>
+        <div class="form-style-2">
+            <div class="form-style-2-heading"></div>
+            <form action="" method="post">
+
+                <p><label>Date de début:</label>
+                    <input type="text" id="datepicker" valeur="01/05/2019"/>
+                </p>
+                <script>
+        function rescan() {
+            var parts = $("#datepicker").val().split('/');
+            var mydate = new Date(parts[2], parts[1] - 1, parts[0]);
+            var ann = $('#annId').val();
+            var redate = new Date(mydate.getTime() - 1000 * 60 * 60 * 24);
+            redate.setFullYear(parseInt(mydate.getFullYear()) + parseInt($('#annId').val()));
+
+            $("#datefinal").val(redate.toLocaleDateString());
+            if ($("#type").val() == "L") {
+                build();
+            } else {
+                buildDegressif();
+            }
+        }
+
+        function dateDiff(date1, date2) {
+            dt1 = new Date(date1);
+            dt2 = new Date(date2);
+            return Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate())) / (1000 * 60 * 60 * 24));
+        }
+
+        function buildDegressif() {
+            var parts = $("#datepicker").val().split('/');
+
+            var mydate = new Date(parts[2], parts[1] - 1, parts[0]);
+            var ann = $('#annId').val();
+            var redate = new Date((mydate.getTime() - 1000 * 60 * 60 * 24));
+            redate.setFullYear(parseInt(mydate.getFullYear()) + parseInt($('#annId').val()));
+
+            var finPremiereAnnee = new Date(mydate.getFullYear(), 11, 31);
+            var nbJourPrem = 360-(30*(parseInt(parts[1]) - 1)+parseInt(parts[0]));
+            if (nbJourPrem >= 360) {
+                nbJourPrem = 360;
+            }
+            var taux = 1 / ann;
+            var residuel = 1.25;
+            var date2001 = new Date(2001, 0, 1);
+            var date20081 = new Date(2008, 11, 3);
+            var date20082 = new Date(2008, 11, 4);
+            var date2009 = new Date(2009, 11, 31);
+
+            if (dateCheck(date2001, mydate, date20081)) {
+                residuel = 1.25;
+                if (ann >= 7) {
+                    residuel = 2.25;
+                }
+                if (ann == 5 | ann == 6) {
+                    residuel = 1.75;
+                }
+            } else
+            if (dateCheck(date2001, mydate, date20081)) {
+                residuel = 1.75;
+                if (ann >= 7) {
+                    residuel = 2.75;
+                }
+                if (ann == 5 | ann == 6) {
+                    residuel = 2.25;
+                }
+            } else {
+                residuel = 1.25;
+                if (ann >= 7) {
+                    residuel = 2.25;
+                }
+                if (ann == 5 | ann == 6) {
+                    residuel = 1.75;
+                }
+            }
+            $("#residuel").val(residuel);
+            tauxdegressif = residuel / ann;
+            $("#tauxdegres").val((tauxdegressif * 100.0).toFixed(2));
+            var baseFiscal = $('#amortir').val();
+
+            var baseAmort = $('#amortir').val() - $('#restant').val();
+            $('#baseAmort').val(baseAmort.toFixed(2))
+            $('#draw').empty();
+
+            var content = "<table id=\"customers\" border=1>";
+            content += "<thead><tr><th colspan=\"2\">Dates</th><th colspan=\"3\">Amortissement Fiscal</th><th colspan=\"3\">Amortissement Comptable</th><th>Amortissement Dérogatoire</th></tr>";
+            content += "<tr><th>Date de début</th><th>Date de fin</th><th>Calcul de l’amortissement</th><th>Montant de l’amortissement</th><th>Amortissements cumulés</th><th>Calcul de l’amortissement</th><th>Montant de l’amortissement</th><th>Amortissements cumulés</th><th>Dotations/Reprises</th></tr></thead>";
+            var valueCompFiscal = (baseFiscal * ((12 - parts[1] + 1) / 12) * tauxdegressif);
+            var valueTotalFiscal = valueCompFiscal;
+            var valueComp = (baseAmort * (nbJourPrem / 360) / ann);
+            var valueTotal = valueComp;
+            content += '<tbody><tr><td>' + mydate.toLocaleDateString() + '</td><td>' + finPremiereAnnee.toLocaleDateString() + '</td>';
+            content += '<td>' + baseFiscal + '*(' + (12 - parts[1] + 1) + '/12)*' + (tauxdegressif * 100).toFixed(2) + '%</td><td>' + valueCompFiscal.toFixed(2) + '</td><td>' + valueTotalFiscal.toFixed(2) + '</td>';
+
+            content += '<td>' + baseAmort + '*(' + nbJourPrem + '/360)/' + ann + '</td><td>' + valueComp.toFixed(2) + '</td><td>' + valueTotal.toFixed(2) + '</td><td>' + (valueCompFiscal - valueComp).toFixed(2) + '</td></tr>';
+
+            var prevDate = new Date(finPremiereAnnee.getTime() + 1000 * 60 * 60 * 24);
+            valueComp = (baseAmort / ann);
+            var valueDero = 0;
+            for (i = 0; i < ann - 1; i++) {
+                if (tauxdegressif < 1 / (ann - i - 1)) {
+                    tauxdegressif = 1 / (ann - i - 1);
+                }
+
+                baseFiscal = baseFiscal - valueCompFiscal;
+                valueCompFiscal = (baseFiscal * tauxdegressif);
+                valueTotalFiscal += valueCompFiscal;
+                valueTotal += valueComp;
+                var beginDate = new Date(prevDate.getTime());
+                var endDate = new Date(prevDate.getTime() - 1000 * 60 * 60 * 24);
+                endDate.setFullYear(parseInt(prevDate.getFullYear()) + 1);
+                valueDero = valueCompFiscal - valueComp;
+
+                content += '<tr><td>' + beginDate.toLocaleDateString() + '</td><td>' + endDate.toLocaleDateString() + '</td>';
+                content += '<td>' + baseFiscal.toFixed(2) + '*' + (tauxdegressif * 100).toFixed(2) + '%</td><td>' + valueCompFiscal.toFixed(2) + '<td>' + valueTotalFiscal.toFixed(2) + '</td>';
+                content += '<td>' + baseAmort + '/' + ann + '</td><td>' + valueComp.toFixed(2) + '<td>' + valueTotal.toFixed(2) + '</td><td>' + (valueDero).toFixed(2) + '</td></tr>';
+                prevDate = new Date(endDate.getTime() + 1000 * 60 * 60 * 24)
+            }
+            tauxdegressif = 1.0;
+            valueCompFiscal = 0;
+            valueTotalFiscal += valueCompFiscal;
+            valueComp = (baseAmort * ((360 - nbJourPrem) / 360) / ann);
+            valueTotal += valueComp;
+            var redate = new Date(mydate.getTime() - 1000 * 60 * 60 * 24);
+            redate.setFullYear(parseInt(mydate.getFullYear()) + parseInt($('#annId').val()));
+            content += '<tr><td>' + prevDate.toLocaleDateString() + '</td><td>' + redate.toLocaleDateString() + '</td>';
+            content += '<td></td><td></td><td></td>';
+            content += '<td>' + baseAmort + '*(' + (360 - nbJourPrem) + '/360)/' + ann + '</td><td>' + valueComp.toFixed(2) + '</td><td>' + valueTotal.toFixed(2) + '</td><td>' + (valueCompFiscal - valueComp).toFixed(2) + '</td></tr>';
+
+            content += "</tbody></table>"
+            $('#draw').append(content);
+        }
+
+        function dateCheck(from, to, check) {
+
+            var fDate, lDate, cDate;
+            fDate = Date.parse(from);
+            lDate = Date.parse(to);
+            cDate = Date.parse(check);
+
+            if ((cDate <= lDate && cDate >= fDate)) {
+                return true;
+            }
+            return false;
+        }
+
+        function build() {
+            var parts = $("#datepicker").val().split('/');
+
+            var mydate = new Date(parts[2], parts[1] - 1, parts[0]);
+            var begindate = new Date(parts[2], 0, 1);
+            var ann = $('#annId').val();
+            var redate = new Date((mydate.getTime() - 1000 * 60 * 60 * 24));
+            redate.setFullYear(parseInt(mydate.getFullYear()) + parseInt($('#annId').val()));
+
+            var finPremiereAnnee = new Date(mydate.getFullYear(), 11, 31);
+
+            var nbJourPrem = 360-(30*(parseInt(parts[1]) - 1)+parseInt(parts[0]));
+            if (nbJourPrem >= 360) {
+                nbJourPrem = 360;
+            }
+            var taux = 1 / ann;
+            var baseFiscal = $('#amortir').val();
+
+            var baseAmort = $('#amortir').val() - $('#restant').val();
+            $('#baseAmort').val(baseAmort.toFixed(2))
+
+            $('#draw').empty();
+            var content = "<table id=\"customers\" border=1>";
+            content += "<thead><tr><th colspan=\"2\">Dates</th><th colspan=\"3\">Amortissement Fiscal</th><th colspan=\"3\">Amortissement Comptable</th><th>Amortissement Dérogatoire</th></tr>";
+            content += "<tr><th>Date de début</th><th>Date de fin</th><th>Calcul de l’amortissement</th><th>Montant de l’amortissement</th><th>Amortissements cumulés</th><th>Calcul de l’amortissement</th><th>Montant de l’amortissement</th><th>Amortissements cumulés</th><th>Dotations/Reprises</th></tr></thead>";
+            var valueCompFiscal = (baseFiscal * (nbJourPrem / 360) / ann);
+            var valueTotalFiscal = valueCompFiscal;
+            var valueComp = (baseAmort * (nbJourPrem / 360) / ann);
+            var valueTotal = valueComp;
+            content += '<tbody><tr><td>' + mydate.toLocaleDateString() + '</td><td>' + finPremiereAnnee.toLocaleDateString() + '</td>';
+            content += '<td>' + baseFiscal + '*(' + nbJourPrem + '/360)/' + ann + '</td><td>' + valueCompFiscal.toFixed(2) + '</td><td>' + valueTotalFiscal.toFixed(2) + '</td>';
+
+            content += '<td>' + baseAmort + '*(' + nbJourPrem + '/360)/' + ann + '</td><td>' + valueComp.toFixed(2) + '</td><td>' + valueTotal.toFixed(2) + '</td><td>' + (valueCompFiscal - valueComp).toFixed(2) + '</td></tr>';
+
+            var prevDate = new Date(finPremiereAnnee.getTime() + 1000 * 60 * 60 * 24);
+            valueComp = (baseAmort / ann);
+            valueCompFiscal = (baseFiscal / ann);
+            for (i = 0; i < ann - 1; i++) {
+
+                valueTotalFiscal += valueCompFiscal;
+                valueTotal += valueComp;
+                var beginDate = new Date(prevDate.getTime());
+                var endDate = new Date(prevDate.getTime() - 1000 * 60 * 60 * 24);
+                endDate.setFullYear(parseInt(prevDate.getFullYear()) + 1);
+
+                content += '<tr><td>' + beginDate.toLocaleDateString() + '</td><td>' + endDate.toLocaleDateString() + '</td>';
+                content += '<td>' + baseFiscal + '/' + ann + '</td><td>' + valueCompFiscal.toFixed(2) + '<td>' + valueTotalFiscal.toFixed(2) + '</td>';
+                content += '<td>' + baseAmort + '/' + ann + '</td><td>' + valueComp.toFixed(2) + '<td>' + valueTotal.toFixed(2) + '</td><td>' + (valueCompFiscal - valueComp).toFixed(2) + '</td></tr>';
+                prevDate = new Date(endDate.getTime() + 1000 * 60 * 60 * 24)
+            }
+            valueCompFiscal = (baseFiscal * ((360 - nbJourPrem) / 360) / ann);
+            valueTotalFiscal += valueCompFiscal;
+            valueComp = (baseAmort * ((360 - nbJourPrem) / 360) / ann);
+            valueTotal += valueComp;
+            var redate = new Date(mydate.getTime() - 1000 * 60 * 60 * 24);
+            redate.setFullYear(parseInt(mydate.getFullYear()) + parseInt($('#annId').val()));
+            content += '<tr><td>' + prevDate.toLocaleDateString() + '</td><td>' + redate.toLocaleDateString() + '</td>';
+            content += '<td>' + baseFiscal + '*(' + (360 - nbJourPrem) + '/360)/' + ann + '</td><td>' + valueCompFiscal.toFixed(2) + '</td><td>' + valueTotalFiscal.toFixed(2) + '</td>';
+            content += '<td>' + baseAmort + '*(' + (360 - nbJourPrem) + '/360)/' + ann + '</td><td>' + valueComp.toFixed(2) + '</td><td>' + valueTotal.toFixed(2) + '</td><td>' + (valueCompFiscal - valueComp).toFixed(2) + '</td></tr>';
+
+            content += "</tbody></table>"
+            $('#draw').append(content);
+
+        }
+        $(function() {
+            $("#datepicker").datepicker({
+                dateFormat: "dd/mm/yy"
+            });
+            $("#datepicker").val(new Date().toLocaleDateString()).trigger('change')
+            $.datepicker.setDefaults($.datepicker.regional["fr"]);
+            $("#datepicker").change(rescan);
+            $("#annId").change(rescan);
+            $("#amortir").change(rescan);
+            $("#restant").change(rescan);
+            $("#type").change(rescan);
+            rescan();
+
+        });
+    </script>
+                <label>Nombre d'années</label>
+                <select id="annId" name="annee">
+                </select>
+                <script>
+        for (var i = 1; i < 30; i++) {
+            $('#annId').append($('<option>', {
+                value: i + 1,
+                text: i + 1
+            }));
+        }
+    </script>
+                <p><label>Date de fin:</label>
+                    <input type="text" id="datefinal" disabled>
+                </p>
+                <p><label>Valeur vénale à amortir</label>
+                    <input type="text" id="amortir" value="20000.0">
+                </p>
+                <p><label>Valeur résiduelle à l'issue du plan</label>
+                    <input type="text" id="restant" value="0">
+                </p>
+                <p><label>Base amortissable</label>
+                    <input type="text" id="baseAmort" disabled>
+                </p>
+                <label>Type ammortissement</label>
+                <select id="type" name="type">
+
+                    <option value="D">Dégressif</option>
+                    <option value="L">Linéaire</option>
+                </select>
+                <p><label>Valeur résiduel:</label>
+                    <input type="text" id="residuel" disabled>
+                </p>
+                <p><label>Taux amortissement dégressif:</label>
+                    <input type="text" id="tauxdegres" disabled>
+                </p>
+
+            </form></div>
+        </div>
+    </td><td valign=top>
+        <div  id="draw"></div>
+    </td></tr></table>
+
+<script src="https://sebadiaz.github.io/ricito/cookiechoices.js"></script><script>document.addEventListener('DOMContentLoaded', function(event){cookieChoices.showCookieConsentBar('Ce site utilise des cookies pour vous offrir le meilleur service. En poursuivant votre navigation, vous acceptez l’utilisation des cookies.', 'J’accepte', 'En savoir plus', 'https://www.buissondiaz.com/terms.html');});</script>
+<p>
+    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | by <a href="https://www.buissondiaz.com" target="_blank">Buisson Diaz Conseil</a>
+</p>
+</body>

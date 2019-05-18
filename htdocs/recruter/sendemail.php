@@ -4,6 +4,8 @@ $database = "buissondiazconseil";
 $username = "root";
 $password = "";
 
+include '../config.php';
+
 // Create connection
 
 $conn = mysqli_connect($servername, $username, $password, $database);
