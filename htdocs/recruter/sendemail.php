@@ -51,7 +51,7 @@ $twig = new \Twig\Environment($loader);
 
 echo $twig->render('index', ['name' => 'Fabien']);
 
-$sql = "EXPLAIN SELECT * from template where PK_TemplateEmail in (Select FK_Template from processustemplate WHERE FK_Processus in (SELECT FK_Processus from funnelprocessus where FK_Funnel in (Select PK_Funnel from funnel)))";
+$sql = "EXPLAIN SELECT * from template where PK_TemplateEmail in (Select FK_Template from processustemplate WHERE FK_Processus in (SELECT FK_Processus from funnelprocessus where FK_Funnel in (Select PK_Funnel from funnel WHERE Clef=\"FUNCAND\")))";
 
 
 mysqli_close($conn);
