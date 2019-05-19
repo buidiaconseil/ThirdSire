@@ -5,7 +5,7 @@ $username = "root";
 $password = "";
 
 include '../config.php';
-
+require_once '../vendor/autoload.php';
 // Create connection
 
 $conn = mysqli_connect($servername, $username, $password, $database);
@@ -42,7 +42,18 @@ if (mysqli_query($conn, $sql)) {
 } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
+
+
+$loader = new \Twig\Loader\ArrayLoader([
+    'index' => 'Hello {{ name }}!',
+]);
+$twig = new \Twig\Environment($loader);
+
+echo $twig->render('index', ['name' => 'Fabien']);
+
 mysqli_close($conn);
+
+
 //header("HTTP/1.1 302 Moved Permanently"); 
     header("Location: /thanks.html"); 
     exit();
