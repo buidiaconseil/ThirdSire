@@ -95,3 +95,19 @@ data<-as.data.frame(cbind(chiffretraj$Siren,t(apply(chiffretraj[,14:19], 1, resc
 (ld2 <- clusterLongData(traj=data[,2:7],idAll=paste("I-",1:nrow(data),sep=""),time=(2:7)+0.5,varNames="R"))
 kml(ld2, nbRedraw = 2, toPlot = "both")
 chiffretrajEnd$clustersEFF <- getClusters(ld2, 4)
+chiffretrajEnd$activite=""
+chiffretrajEnd$nom=""
+for(i in 1:nrow(chiffretrajEnd)){
+  siren<-chiffretrajEnd[i,1]
+  listAct<-chiffres_cles_2018[chiffres_cles_2018$Siren==siren,6]
+  caseAct<-unique(listAct[complete.cases(listAct),])
+  if(nrow(caseAct)==1){
+    chiffretrajEnd[i,23]=unique(listAct[complete.cases(listAct),])
+  }
+  listNom<-chiffres_cles_2018[chiffres_cles_2018$Siren==siren,1]
+  caseNom<-unique(listNom[complete.cases(listNom),])
+  if(nrow(caseNom)==1){
+    chiffretrajEnd[i,24]=unique(listNom[complete.cases(listNom),])
+  }
+}
+write_csv(chiffretrajEnd,"chiffeAffaireCluster.csv")
