@@ -71,5 +71,27 @@ for(i in 1:nrow(chiffre2013Clean)){
 colnames(chiffretraj)<- c("Siren","CA2013","CA2014","CA2015","CA2016","CA2017","CA2018","Résultat2013","Résultat2014","Résultat2015","Résultat2016","Résultat2017","Résultat2018","Effectif2013","Effectif2014","Effectif2015","Effectif2016","Effectif2017","Effectif2018")
 
 
+write_csv(chiffretraj,"chiffeAffaire.csv")
+
+chiffretrajEnd<-chiffretraj
 library(kml)
-cldSDQ <- cld(chiffretraj, timeInData = 2:7)
+library(scales)
+mtx <- matrix(t(1:6), ncol = 6) 
+mtx.rep <- (apply(t(mtx), 1, rep,nrow(chiffretraj) )) 
+time<-cbind(chiffretraj$Siren,mtx.rep)
+
+data<-as.data.frame(cbind(chiffretraj$Siren,t(apply(chiffretraj[,2:7], 1, rescale))))
+(ld2 <- clusterLongData(traj=data[,2:7],idAll=paste("I-",1:nrow(data),sep=""),time=(2:7)+0.5,varNames="R"))
+kml(ld2, nbRedraw = 2, toPlot = "both")
+chiffretrajEnd$clustersCA <- getClusters(ld2, 4)
+
+data<-as.data.frame(cbind(chiffretraj$Siren,t(apply(chiffretraj[,8:13], 1, rescale))))
+(ld2 <- clusterLongData(traj=data[,2:7],idAll=paste("I-",1:nrow(data),sep=""),time=(2:7)+0.5,varNames="R"))
+kml(ld2, nbRedraw = 2, toPlot = "both")
+chiffretrajEnd$clustersRES <- getClusters(ld2, 4)
+
+
+data<-as.data.frame(cbind(chiffretraj$Siren,t(apply(chiffretraj[,14:19], 1, rescale))))
+(ld2 <- clusterLongData(traj=data[,2:7],idAll=paste("I-",1:nrow(data),sep=""),time=(2:7)+0.5,varNames="R"))
+kml(ld2, nbRedraw = 2, toPlot = "both")
+chiffretrajEnd$clustersEFF <- getClusters(ld2, 4)
