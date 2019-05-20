@@ -41,7 +41,7 @@ for(i in 1:nrow(chiffre2013Clean)){
   siren2016<-unique(chiffre2016Clean[chiffre2016Clean$Siren==siren,])
   siren2017<-unique(chiffre2017Clean[chiffre2017Clean$Siren==siren,])
   siren2018<-unique(chiffre2018Clean[chiffre2018Clean$Siren==siren,])
-  if(nrow(siren2014)>0 && nrow(siren2015)>0 && nrow(siren2016)>0 && nrow(siren2017)>0 && nrow(siren2018)>0){
+  if(nrow(siren2014)==1 && nrow(siren2015)==1 && nrow(siren2016)==1 && nrow(siren2017)==1 && nrow(siren2018)==1){
     racc<-c(siren,
             siren2013$CA/siren2013$Durée*12,
             siren2014$CA/siren2014$Durée*12,
@@ -63,11 +63,13 @@ for(i in 1:nrow(chiffre2013Clean)){
       siren2016$Effectif/siren2016$Durée*12,
       siren2017$Effectif/siren2017$Durée*12,
       siren2018$Effectif/siren2018$Durée*12)
-    racc<-cbind(t(as.matrix(racc)),t(as.matrix(raccE)),t(as.matrix(raccR)))
+    racc<-cbind(t(as.matrix(racc)),t(as.matrix(raccR)),t(as.matrix(raccE)))
     chiffretraj<-rbind(chiffretraj,racc)
     }
   
 }
+colnames(chiffretraj)<- c("Siren","CA2013","CA2014","CA2015","CA2016","CA2017","CA2018","Résultat2013","Résultat2014","Résultat2015","Résultat2016","Résultat2017","Résultat2018","Effectif2013","Effectif2014","Effectif2015","Effectif2016","Effectif2017","Effectif2018")
+
 
 library(kml)
-cldSDQ <- cld(chiffreClean, timeInData = 4:6)
+cldSDQ <- cld(chiffretraj, timeInData = 2:7)
