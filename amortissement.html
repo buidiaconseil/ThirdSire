@@ -317,7 +317,7 @@
                                     nbJourFiscal = 0;
                                 }
 
-                                var nbJourPrem = 360 - sameYear * (30 * (12 - moisFiscal)) - (30 * (parseInt(parts[1]) - 1) + parseInt(parts[0])) + (moisFiscal) * 30 * nextYear - nbJourFiscal;
+                                var nbJourPrem = 1 + 360 - sameYear * (30 * (12 - moisFiscal)) - (30 * (parseInt(parts[1]) - 1) + parseInt(parts[0])) + (moisFiscal) * 30 * nextYear - nbJourFiscal;
                                 if (nbJourPrem >= 360) {
                                     nbJourPrem = 360;
                                 }
@@ -457,7 +457,7 @@
                                     nbJourFiscal = 0;
                                 }
 
-                                var nbJourPrem = 360 - sameYear * (30 * (12 - moisFiscal)) - (30 * (parseInt(parts[1]) - 1) + parseInt(parts[0])) + (moisFiscal) * 30 * nextYear - nbJourFiscal * 1;
+                                var nbJourPrem = 1 + 360 - sameYear * (30 * (12 - moisFiscal)) - (30 * (parseInt(parts[1]) - 1) + parseInt(parts[0])) + (moisFiscal) * 30 * nextYear - nbJourFiscal * 1;
                                 if (nbJourPrem >= 360) {
                                     nbJourPrem = 360;
                                 }
@@ -501,7 +501,7 @@
                                 valueComp = (baseAmort * ((360 - nbJourPrem) / 360) / ann);
                                 valueTotal += valueComp;
                                 var redate = new Date(mydate.getTime() - 1000 * 60 * 60 * 24);
-                                redate.setFullYear(parseInt(mydate.getFullYear()) + nextYear + parseInt($('#annId').val()));
+                                redate.setFullYear(parseInt(mydate.getFullYear()) + parseInt($('#annId').val()));
                                 content += '<tr><td>' + prevDate.toLocaleDateString() + '</td><td>' + redate.toLocaleDateString() + '</td>';
                                 content += '<td>' + baseFiscal + '*(' + (360 - nbJourPrem) + '/360)/' + ann + '</td><td>' + valueCompFiscal.toFixed(2) + '</td><td>' + valueTotalFiscal.toFixed(2) + '</td>';
                                 content += '<td>' + baseAmort + '*(' + (360 - nbJourPrem) + '/360)/' + ann + '</td><td>' + valueComp.toFixed(2) + '</td><td>' + valueTotal.toFixed(2) + '</td><td>' + (valueCompFiscal - valueComp).toFixed(2) + '</td></tr>';
