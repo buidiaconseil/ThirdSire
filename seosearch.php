@@ -1,12 +1,8 @@
 <?php
-
 // site web à crawler
 $url = 'http://www.buissondiaz.com';
-
-
 // déclaration de la fonction de crawl
 function crawl($url) {
-
   // initialisation de curl
   $ch = curl_init($url);
   $header[0] = "Accept: text/xml,application/xml,application/xhtml+xml,"; 
@@ -24,9 +20,7 @@ function crawl($url) {
   if(file_exists($temp)) {
     unlink($temp);
   }
-
   //$fp_fichier_html_brut = fopen($temp, 'a');
-
   // définition des paramètres curl
   // 1 redirection de l'output dans le fichier txt
   //curl_setopt($ch, CURLOPT_FILE, $fp_fichier_html_brut);
@@ -38,19 +32,15 @@ function crawl($url) {
   curl_setopt($ch, CURLOPT_AUTOREFERER, true); 
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
   curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-
   // exécution de curl
   $html_brut = curl_exec($ch);
   if (curl_error($ch)) {
-    echo $url." ".$ch;
+    echo $url." ".curl_error($ch);
 }
   // fermeture de la session curl
   curl_close($ch);
-
   // fermeture du fichier texte
   //fclose($fp_fichier_html_brut);
-
-
   // passage du contenu du fichier à une variable pour analyse
   //$html_brut = file_get_contents($temp);
   //echo $html_brut;
@@ -68,10 +58,18 @@ function crawl($url) {
             //echo "<br/>".$value2;
             $isIn=strpos(strtolower($value2),'name="keywords"');
             if($isIn){
-                preg_match('/.*content="(.*)".*/',$value2,$outCont);
+                $value22=str_replace("<meta", "", $value2);
+                $value22=str_replace('name="keywords', "", $value22);
+                preg_match('/.*content="(.*)".*/',$value22,$outCont);
                 foreach ($outCont as &$value3) {
-                   
-                    $arr = array_merge($arr,preg_split("/[\s,]+/", $value3));
+                    $value4 = str_replace("<meta", "", $value3);
+                    $value4 = str_replace("/", "", $value4);
+                    $value4 = str_replace("//", "", $value4);
+                    $value4 = str_replace(">", "", $value4);
+                    $value4 = str_replace(">", "", $value4);
+                    $value4 = str_replace('name="', "", $value4);
+                    $value4 = str_replace('"', "", $value4);
+                    $arr = array_merge($arr,preg_split("/[\s,]+/", $value4));
                     
                 }
             }
@@ -98,20 +96,19 @@ function crawl($url) {
                     $value3 = str_replace("{", " ", $value3);
                     $value3 = str_replace("}", " ", $value3);
                     $value3 = str_replace(",", " ", $value3);
-
                     $listkey=preg_split("/ /", $value3);
                     $i=0;
                     $prevOne="";
                     $prevSecond="";
                     $finArray = array();
-                    echo "<br/>".count($listkey);
+                    
                     foreach ($listkey as &$value) {
                         if (strlen($value)>4){
                             $finArray[]=$value;
                         }
                     }
                     $listkey=$finArray;
-                    echo "<br/>".count($listkey);
+                    
                     
                     $finArray = array();
                     
@@ -135,10 +132,8 @@ function crawl($url) {
     //var_dump($arr);
   //<meta name="keywords" content="mot clé 1, mot clé 2...">
 }
-
 // déclaration de la fonction de crawl
 function cextends($key) {
-
     $url="https://www.google.fr/complete/search?q=".urlencode($key)."&cp=3&client=psy-ab&xssi=t&gs_ri=gws-wiz&hl=en-FR&authuser=0&psi=-Rr0XNTOEOqzgwfR_4CICA.1559501564815&ei=-Rr0XNTOEOqzgwfR_4CICA";
     // initialisation de curl
     $ch = curl_init($url);
@@ -168,9 +163,7 @@ function cextends($key) {
   if(file_exists($temp)) {
     unlink($temp);
   }
-
   //$fp_fichier_html_brut = fopen($temp, 'a');
-
   // définition des paramètres curl
   // 1 redirection de l'output dans le fichier txt
   //curl_setopt($ch, CURLOPT_FILE, $fp_fichier_html_brut);
@@ -182,14 +175,12 @@ function cextends($key) {
   curl_setopt($ch, CURLOPT_AUTOREFERER, true); 
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
   curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-
     // exécution de curl
     $html_brut = curl_exec($ch);
     
     if (curl_error($ch)) {
-        echo $url." ".$ch;
+        echo $url." ".curl_error($ch);
     }
-
     // fermeture de la session curl
     curl_close($ch);
   
@@ -200,6 +191,7 @@ function cextends($key) {
     // passage du contenu du fichier à une variable pour analyse
     //$html_brut = file_get_contents($temp);
     $html_brut = str_replace("\u003cb", "", $html_brut);
+    $html_brut = str_replace("\u003d", "", $html_brut);
     $html_brut = str_replace("\u003c\\/b", "", $html_brut);
     $html_brut = str_replace("\u003e", "", $html_brut);
     $html_brut = str_replace("\u0026", "", $html_brut);
@@ -228,19 +220,16 @@ function cextends($key) {
       //var_dump($arr);
     //<meta name="keywords" content="mot clé 1, mot clé 2...">
   }
-
 // on appelle une première fois la fonction avec l'url racine
 if( array_key_exists("url", $_GET)) {
     $url=$_GET["url"];
 }
 $listkey=crawl($url);
 ///var_dump($listkey);
-
 //$listkey=array_merge($finArray,$listkey);
-echo "<br/>".count($listkey);
+
 $i=0;
 //$listkey=array_unique($listkey);
-echo "<br/>".count($listkey);
 
 $finArray = array();
 $prevOne="";
@@ -269,11 +258,21 @@ $finArray=array_unique($finArray);
 //foreach ($finArray as $key => $value){
 //    $newArray[]=$value;//
 //}
-var_dump($finArray);
-echo json_encode($finArray);
-echo "paris";
-$ar = array('apple', 'orange', 'banana', 'strawberry');
-echo json_encode($ar);
+//var_dump($finArray);
+//echo json_encode($finArray);
+$listkey=array_unique($finArray);
+
+echo "[";
+$i=0;
+foreach ($listkey as &$value) {
+    if($i>0){
+        echo ",";
+    }
+    echo '"'.trim($value).'"'."\n";
+    
+    $i=$i+1;
+}
+echo "]";
 //echo json_encode($finArray);
  
 ?>
