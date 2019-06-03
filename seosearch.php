@@ -239,7 +239,7 @@ $listkey=crawl($url);
 //$listkey=array_merge($finArray,$listkey);
 echo "<br/>".count($listkey);
 $i=0;
-$listkey=array_unique($listkey);
+//$listkey=array_unique($listkey);
 echo "<br/>".count($listkey);
 
 $finArray = array();
