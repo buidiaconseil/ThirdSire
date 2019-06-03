@@ -1,4 +1,5 @@
 <?php
+set_time_limit ( 5000 ) ;
 /*
 https://suggestqueries.google.com/complete/search?client=chrome&q=amo&hl=fr&gl={isolg}&_=1559561814037&callback=jQuery11020009850414586044298_1559561814036
 https://api.bing.com/osjson.aspx?language=FR-FR&form=OSDJAS&JsonType=callback&JsonCallback=Drupal.behaviors.seoquantum_kwfinder.bing&query=amo&_=1559561814039&callback=jQuery11020009850414586044298_1559561814038
