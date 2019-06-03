@@ -1,4 +1,11 @@
 <?php
+/*
+https://suggestqueries.google.com/complete/search?client=chrome&q=amo&hl=fr&gl={isolg}&_=1559561814037&callback=jQuery11020009850414586044298_1559561814036
+https://api.bing.com/osjson.aspx?language=FR-FR&form=OSDJAS&JsonType=callback&JsonCallback=Drupal.behaviors.seoquantum_kwfinder.bing&query=amo&_=1559561814039&callback=jQuery11020009850414586044298_1559561814038
+https://fr.search.yahoo.com/sugg/gossip/gossip-fr-ura/?output=fxjsonp&command=amo&appid=fp&nresults=20&_=1559561814041&callback=jQuery11020009850414586044298_1559561814040
+https://fr.wikipedia.org/w/api.php?action=opensearch&format=json&formatversion=2&search=amo&namespace=0&limit=20&suggest=false&_=1559561814043&callback=jQuery11020009850414586044298_1559561814042
+https://completion.amazon.co.uk/search/complete?method=completion&mkt=5&l=fr_FR&search-alias=aps&ks=32&q=amo&qs=&cf=1&fb=1&sc=1&_=1559561814045&callback=jQuery11020009850414586044298_1559561814044
+*/
 // site web à crawler
 $url = 'http://www.buissondiaz.com';
 // déclaration de la fonction de crawl
