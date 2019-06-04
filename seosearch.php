@@ -9,7 +9,7 @@ https://completion.amazon.co.uk/search/complete?method=completion&mkt=5&l=fr_FR&
 https://developers.google.com/adwords/api/docs/guides/targeting-idea-service#use_case
 */
 // site web à crawler
-$url = 'http://www.buissondiaz.com';
+$url = 'http://www.hired.com';
 // déclaration de la fonction de crawl
 function crawl($url) {
   // initialisation de curl
@@ -36,6 +36,7 @@ function crawl($url) {
   curl_setopt($ch, CURLOPT_URL, $url); 
   curl_setopt($ch, CURLOPT_USERAGENT, 'Googlebot/2.1 (+http://www.google.com/bot.html)'); 
   curl_setopt($ch, CURLOPT_HTTPHEADER, $header); 
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
   curl_setopt($ch, CURLOPT_REFERER, 'http://www.google.com'); 
   curl_setopt($ch, CURLOPT_ENCODING, 'gzip,deflate'); 
   curl_setopt($ch, CURLOPT_AUTOREFERER, true); 
@@ -43,6 +44,7 @@ function crawl($url) {
   curl_setopt($ch, CURLOPT_TIMEOUT, 10);
   // exécution de curl
   $html_brut = curl_exec($ch);
+  
   if (curl_error($ch)) {
     echo $url." ".curl_error($ch);
 }
@@ -62,16 +64,20 @@ function crawl($url) {
   $html_brut,
     $out);
     $arr = array();
+   
     foreach ($out as &$value) {
         foreach ($value as &$value2) {
             //echo "<br/>".$value2;
             $isIn=strpos(strtolower($value2),'name="keywords"');
-            if($isIn){
+            $isIn2=strpos(strtolower($value2),"'name='keywords'");
+            if($isIn || $isIn2){
+                
                 $value22=str_replace("<meta", "", $value2);
-                $value22=str_replace('name="keywords', "", $value22);
-                preg_match('/.*content="(.*)".*/',$value22,$outCont);
+                $value22=str_replace('name="keywords"', "", $value22);
+                preg_match('/.*content=[\'"](.*)[\'"].*/',$value22,$outCont);
                 foreach ($outCont as &$value3) {
                     $value4 = str_replace("<meta", "", $value3);
+                    $value4 = str_replace("content=", "", $value4);
                     $value4 = str_replace("/", "", $value4);
                     $value4 = str_replace("//", "", $value4);
                     $value4 = str_replace(">", "", $value4);
@@ -86,16 +92,28 @@ function crawl($url) {
     }
     foreach ($out as &$value) {
         foreach ($value as &$value2) {
-            //echo "<br/>".$value2;
-            $isIn=strpos(strtolower($value2),'name="description"');
-            $isIn2=strpos(strtolower($value2),'property="description"');
+            //
+            $lower=strtolower($value2);
+            $isIn=strpos($lower,'name="description"');
+            $isIn2=strpos($lower,'property="description"');
+            $isIn3=strpos($lower,"property='description'");
+            $isIn4=strpos($lower,"name='description'");
             
-            if($isIn || $isIn2 ){
-                
-                preg_match('/.*content="(.*)".*/',$value2,$outCont);
+            if($isIn || $isIn2 ||$isIn3 ||$isIn4){
+                //echo $value2;
+                preg_match('/.*content=[\'"](.*)[\'"].*/',$value2,$outCont);
                 foreach ($outCont as &$value3) {
+
                     $value3 = str_replace('property="description"'," ", $value3);
+                    $value3 = str_replace("property='description'"," ", $value3);
+                    $value3 = str_replace('name="description"'," ", $value3);
+                    $value3 = str_replace("name='description'"," ", $value3);
+                    $value3 = str_replace("name="," ", $value3);
+                    
                     $value3 = str_replace('content="'," ", $value3);
+                    $value3 = str_replace("content='"," ", $value3);
+                    $value3 = str_replace("content="," ", $value3);
+                    
                     $value3 = str_replace('<meta'," ", $value3);
                     $value3 = str_replace('>'," ", $value3);
                     $value3 = str_replace('['," ", $value3);
@@ -182,6 +200,7 @@ function cextends($key) {
   curl_setopt($ch, CURLOPT_REFERER, 'http://www.google.com'); 
   curl_setopt($ch, CURLOPT_ENCODING, 'gzip,deflate'); 
   curl_setopt($ch, CURLOPT_AUTOREFERER, true); 
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
   curl_setopt($ch, CURLOPT_TIMEOUT, 10);
     // exécution de curl
@@ -229,7 +248,6 @@ function cextends($key) {
       //var_dump($arr);
     //<meta name="keywords" content="mot clé 1, mot clé 2...">
   }
-
   function crawlUrl($url) {
     //$url="https://www.google.fr/complete/search?q=".urlencode($key)."&cp=3&client=psy-ab&xssi=t&gs_ri=gws-wiz&hl=en-FR&authuser=0&psi=-Rr0XNTOEOqzgwfR_4CICA.1559501564815&ei=-Rr0XNTOEOqzgwfR_4CICA";
     // initialisation de curl
@@ -271,6 +289,7 @@ function cextends($key) {
   curl_setopt($ch, CURLOPT_ENCODING, 'gzip,deflate'); 
   curl_setopt($ch, CURLOPT_AUTOREFERER, true); 
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
   curl_setopt($ch, CURLOPT_TIMEOUT, 10);
     // exécution de curl
     $html_brut = curl_exec($ch);
@@ -294,10 +313,8 @@ if( array_key_exists("url", $_GET)) {
 $listkey=crawl($url);
 ///var_dump($listkey);
 //$listkey=array_merge($finArray,$listkey);
-
 $i=0;
 //$listkey=array_unique($listkey);
-
 $finArray = array();
 $prevOne="";
 foreach ($listkey as &$value) {
@@ -323,7 +340,6 @@ foreach ($listkey as &$value) {
     $finNew=json_decode(crawlUrl($url));
     $finArray2=array_merge($finArray, $finNew[1]);
     $finArray=$finArray2;
-
     $url="https://fr.wikipedia.org/w/api.php?action=opensearch&format=json&formatversion=2&search=".$trimed."&namespace=0&limit=20&suggest=false&_=1559561814043";
     $molo=crawlUrl($url);
     
@@ -353,7 +369,6 @@ foreach ($listkey as &$value) {
 //var_dump($finArray);
 //echo json_encode($finArray);
 $listkey=array_unique($finArray);
-
 echo "[";
 $i=0;
 foreach ($listkey as &$value) {
