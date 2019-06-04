@@ -9,7 +9,7 @@ https://completion.amazon.co.uk/search/complete?method=completion&mkt=5&l=fr_FR&
 https://developers.google.com/adwords/api/docs/guides/targeting-idea-service#use_case
 */
 // site web à crawler
-$url = 'http://www.hired.com';
+$url = 'http://www.buissondiaz.com';
 // déclaration de la fonction de crawl
 function crawl($url) {
   // initialisation de curl
