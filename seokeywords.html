@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<title>Amortisation Linéaire et Dégressif Comptable</title>
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="Un outil pour extraire des informations de votre site web et proposé des keywords.A tool for extracting information from your website and proposing keywords.Una herramienta para extraer información de su sitio web y proponer palabras clave.Ein Tool zum Extrahieren von Informationen aus Ihrer Website und Vorschlagen von Schlüsselwörtern.Nástroj na získavanie informácií z vašej webovej stránky a navrhovanie kľúčových slov." />
+    <meta name="keywords" content="seo keywords,seo,seo search,seo keywords search" />
+    <meta name="author" content="Sebastien DIAZ" />
+    <LINK REL="SHORTCUT ICON" HREF="https://sebadiaz.github.io/ricito/favicon.ico" />
+    <meta charset="UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script></script>
+    <style>
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        #customers td,
+        #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+        
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        input[type=text],
+        select {
+            width: 100%;
+            padding: 6px 6px;
+            margin: 1px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 1px;
+            box-sizing: border-box;
+        }
+        
+        input[type=submit] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 6px 6px;
+            margin: 1px 0;
+            border: none;
+            border-radius: 1px;
+            cursor: pointer;
+        }
+        
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+        
+        div {
+            border-radius: 1px;
+            background-color: #f2f2f2;
+            padding: 1px;
+        }
+        
+        
+        
+        div.onright {
+            position: absolute;
+            right: 0;
+        }
+        
+        .main {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TR8LNH9');
+    </script>
+    <!-- End Google Tag Manager -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117582469-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-117582469-1');
+    </script>
+    <!-- Anti-flicker snippet (recommended)  -->
+    <style>
+        .async-hide {
+            opacity: 0 !important
+        }
+    </style>
+    <script>
+        (function(a, s, y, n, c, h, i, d, e) {
+            s.className += ' ' + y;
+            h.start = 1 * new Date;
+            h.end = i = function() {
+                s.className = s.className.replace(RegExp(' ?' + y), '')
+            };
+            (a[n] = a[n] || []).hide = h;
+            setTimeout(function() {
+                i();
+                h.end = null
+            }, c);
+            h.timeout = c;
+        })(window, document.documentElement, 'async-hide', 'dataLayer', 4000, {
+            'GTM-WVNGFPG': true
+        });
+    </script>
+
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TR8LNH9"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <h1>SEO Search for Keywords!</h1>
+    <p>Un outil pour extraire des informations de votre site web et proposer des keywords.</p>
+    <p>A tool for extracting information from your website and proposing keywords.</p>
+    <p>Una herramienta para extraer información de su sitio web y proponer palabras clave.</p>
+    <p>Ein Tool zum Extrahieren von Informationen aus Ihrer Website und Vorschlagen von Schlüsselwörtern.</p>
+    <p>Nástroj na získavanie informácií z vašej webovej stránky a navrhovanie kľúčových slov.</p>
+    <table>
+        <tr>
+            <td valign=top>
+                <div class="form-style-2">
+                    <div ></div>
+                    
+
+                        <p><label>Website</label>
+                            <input type="text" id="url" value="http://www.buissondiaz.com" cols="30"/>
+                            <button id="searchkeywords" onclick="rescan()">Search</button>
+                        </p>
+                        <div id="wait" hidden><img src="6.gif"/></div>
+                        <script>
+                            
+                            function rescan(){
+                                $("#wait").show();
+                                $("#values").val( "Search for "+$( "#url" ).val() );
+                                $.get( "seosearch.php?url="+$( "#url" ).val(), function( data ) {
+                                    $("#values").val( data );
+                                    $("#wait").hide();
+                                  });
+                            }
+
+                            $(function() {
+                               
+                                $("#url").change(rescan);
+
+                                
+
+                            });
+                        </script>
+                    
+
+              
+                </div>
+                    <div class="form-style-2-heading"></div>
+                    <textarea id="values" rows="20" cols="50"></textarea>
+                    </div>
+                </div>
+                </div>
+            </td>
+            <td valign=top>
+                <div id="draw"></div>
+            </td>
+        </tr>
+    </table>
+
+    <script src="https://sebadiaz.github.io/ricito/cookiechoices.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(event) {
+            cookieChoices.showCookieConsentBar('Ce site utilise des cookies pour vous offrir le meilleur service. En poursuivant votre navigation, vous acceptez l’utilisation des cookies.', 'J’accepte', 'En savoir plus', 'https://www.buissondiaz.com/terms.html');
+        });
+    </script>
+    <p>
+        Copyright &copy;
+        <script>
+            document.write(new Date().getFullYear());
+        </script> All rights reserved | by <a href="https://www.buissondiaz.com" target="_blank">Buisson Diaz Conseil</a>
+    </p>
+
+
+
+
+</div>
+</body>	
